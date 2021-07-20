@@ -40,6 +40,12 @@ jobs:
         with:
           python-version: '3.8'
 
+      # Run the pipeline using meltano
+      - name: Run the extract-load pipeline
+        run: |
+          meltano elt tap-carbon-intensity target-jsonl
+          echo "Extract-load completed successfully!"
+
       # Installs Postgres, Meltano, and Meltano plugins
       - name: Install Meltano and project plugins
         run: |
